@@ -5,10 +5,16 @@ export interface Product {
     price: number,
     image_url: string,
     sizes: Sizes[],
-    qty: number
+    itemsInStock: number,
 }
 
 export interface Sizes {
     size_number: number,
-    qty_of_size: number
+    qty_of_size: number,
+    selectedSize: number
+}
+
+export interface CartProduct extends Product {
+    qty: number,
+    index?: number
 }
