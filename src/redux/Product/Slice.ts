@@ -21,7 +21,9 @@ export const Slice = createSlice({
           const {product} = payload;
           const productIndex = state.cart.findIndex((product) => product.id === product.id);
           if (productIndex !== -1) {
+            const selectedSizeIndex = state.cart[productIndex].sizes.findIndex(singleSize => singleSize.size_number === payload.size);
               state.cart[productIndex].qty += 1;
+              state.cart[productIndex].selectedSizeName = state.cart[productIndex].sizes[selectedSizeIndex].size_number;
           } else {
               state.cart.push({...product, qty: 1});
           }
@@ -39,9 +41,10 @@ export const Slice = createSlice({
           const cartSelectedSize = cartSizes?.find(({size_number}) => size_number === size);
           if (productSelectedSize && cartSelectedSize) {
             productSelectedSize.qty_of_size -= 1;
-            productSelectedSize.selectedSize +=1;
+            productSelectedSize.selectedSizeQty +=1;
             cartSelectedSize.qty_of_size -= 1;
-            cartSelectedSize.selectedSize +=1;
+            cartSelectedSize.selectedSizeQty +=1;
+            // state.cart[productId].selectedSizeName = cartSelectedSize;
           }
         }
     }

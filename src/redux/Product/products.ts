@@ -8,7 +8,7 @@ export const Products: Product[] = [
         code_number: 'RB3210 2112A',
         price: 120.60, 
         image_url: 'https://immagini.trovaprezzi.it/varianti/ray_ban_wayfarer_classic_original.jpg',
-        sizes: [{size_number: 50, qty_of_size: 3, selectedSize: 0}, {size_number: 52, qty_of_size: 2, selectedSize: 0}],
+        sizes: [{size_number: 50, qty_of_size: 3, selectedSizeQty: 0}, {size_number: 52, qty_of_size: 2, selectedSizeQty: 0}],
         itemsInStock: 5
     },
     {
@@ -17,7 +17,7 @@ export const Products: Product[] = [
         code_number: 'RB9210 1149',
         price: 166.00, 
         image_url: 'https://immagini.trovaprezzi.it/varianti/ray_ban_wayfarer_classic_original.jpg',
-        sizes: [{size_number: 50, qty_of_size: 1, selectedSize: 0}, {size_number: 52, qty_of_size: 1, selectedSize: 0}, {size_number: 53, qty_of_size: 2, selectedSize: 0}],
+        sizes: [{size_number: 50, qty_of_size: 1, selectedSizeQty: 0}, {size_number: 52, qty_of_size: 1, selectedSizeQty: 0}, {size_number: 53, qty_of_size: 2, selectedSizeQty: 0}],
         itemsInStock: 4
     },
     {
@@ -26,7 +26,7 @@ export const Products: Product[] = [
         code_number: 'RB3594 9093CB 53',
         price: 152.00, 
         image_url: 'https://immagini.trovaprezzi.it/varianti/ray_ban_wayfarer_classic_original.jpg',
-        sizes: [{size_number: 50, qty_of_size: 2, selectedSize: 0}, {size_number: 52, qty_of_size: 2, selectedSize: 0}],
+        sizes: [{size_number: 50, qty_of_size: 2, selectedSizeQty: 0}, {size_number: 52, qty_of_size: 2, selectedSizeQty: 0}],
         itemsInStock: 4
     },
     {
@@ -35,7 +35,7 @@ export const Products: Product[] = [
         code_number: 'RB3594 2345 53',
         price: 259.90, 
         image_url: 'https://immagini.trovaprezzi.it/varianti/ray_ban_wayfarer_classic_original.jpg',
-        sizes: [{size_number: 50, qty_of_size: 4, selectedSize: 0}],
+        sizes: [{size_number: 50, qty_of_size: 4, selectedSizeQty: 0}],
         itemsInStock: 4
     },
     {
@@ -44,7 +44,7 @@ export const Products: Product[] = [
         code_number: 'RB6211 5122A 50',
         price: 150.90,
         image_url: 'https://immagini.trovaprezzi.it/varianti/ray_ban_wayfarer_classic_original.jpg',
-        sizes: [{size_number: 50, qty_of_size: 2, selectedSize: 0}, {size_number: 52, qty_of_size: 1, selectedSize: 0}],
+        sizes: [{size_number: 50, qty_of_size: 2, selectedSizeQty: 0}, {size_number: 52, qty_of_size: 1, selectedSizeQty: 0}],
         itemsInStock: 3
     }
 ]

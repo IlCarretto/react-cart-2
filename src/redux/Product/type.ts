@@ -11,10 +11,10 @@ export interface Product {
 export interface Sizes {
     size_number: number,
     qty_of_size: number,
-    selectedSize: number
+    selectedSizeQty: number
 }
 
 export interface CartProduct extends Product {
     qty: number,
-    index?: number
+    selectedSizeName?: number
 }
