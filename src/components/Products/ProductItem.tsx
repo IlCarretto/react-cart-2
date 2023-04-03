@@ -3,7 +3,7 @@ import { Product } from '../../redux/Product/type'
 import { Button, Card, Image, MsBox, Select, TextContainer } from './style'
 import formatNumber from '../../utils/formatNumber'
 import { useAppDispatch, useAppSelector } from '../../redux/store'
-import { addToCart, updateChosenSize } from '../../redux/Product/Slice'
+import { GetAvailableQty, addToCart, updateChosenSize } from '../../redux/Product/Slice'
 
 // Tipizzo la props product per prenderle dal genitore
 interface Props {
@@ -14,10 +14,11 @@ const ProductItem = ({product}: Props) => {
   const dispatch = useAppDispatch();
   const [size, setSize] = useState<null | number>(null);
 
-  const handleChange = (e: any) => {
-    console.log(e.target.value);
-    setSize(e.target.value);
-  }
+  // Function per ottenere la quantità disponibile per ogni prodotto
+  const useAvailableQty = (productId: number) => {
+    const availableQty = useAppSelector(state => GetAvailableQty(state, productId));
+    return availableQty;
+  };
 
   // Funzione di handle per aggiungere i prodotti al carrello
   const handleAddToCart = (product: Product, size: number) => {
@@ -33,7 +34,7 @@ const ProductItem = ({product}: Props) => {
       <TextContainer>
         <h4>{product.name}</h4>
         <p>{product.code_number}</p>
-        <p>Qty: {product.itemsInStock}</p>
+        <p>Qty: {useAvailableQty(product.id)}</p>
         <p>Price: {formatNumber(product.price)}</p>
         <MsBox>
           <Select
@@ -41,6 +42,7 @@ const ProductItem = ({product}: Props) => {
           onChange={ (e) => {
             if(e.target.value) {
               setSize(Number(e.target.value));
+              console.log(size);
             }
           }}
           // onChange={(singleSize) => handleSelectSize(singleSize.size_number, product)}
@@ -58,6 +60,7 @@ const ProductItem = ({product}: Props) => {
             })}
           </Select>
           <Button
+            disabled={useAvailableQty(product.id) === 0}
             onClick={() => 
               {
                 size !== null && handleAddToCart(product, size)}

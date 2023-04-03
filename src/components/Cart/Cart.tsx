@@ -14,8 +14,12 @@ const Cart = () => {
   const totalItems = useAppSelector(getTotalItems);
 
   const handleAddToCart = (product: CartProduct, size: number) => {
-    dispatch(addToCart({product, size}));
-    dispatch(updateChosenSize({productId: product.id, size}));
+    const productIndex = cartProducts.findIndex(cartProduct => cartProduct.id === product.id);
+    const selectedSizeIndex = cartProducts[productIndex].sizes.findIndex(singleSize => singleSize.size_number === size);
+    if (cartProducts[productIndex].sizes[selectedSizeIndex].qty_of_size > 0) {
+      dispatch(addToCart({product, size}));
+      dispatch(updateChosenSize({productId: product.id, size}));
+    }
   }
 
   return (
@@ -49,13 +53,14 @@ const Cart = () => {
                           </div>
                         </td>
                         <td className="align-middle">{product.code_number}</td>
-                        <td className="align-middle">Size</td>
+                        <td className="align-middle">{product.selectedSizeName}mm</td>
                         {/* <td className="align-middle">{product.selectedSize?.size}</td> */}
                         <td className="align-middle">
                           <div className='d-flex justify-content-between'>
                             <p>{product.qty}</p>
-                            <button 
-                            className='btn btn-primary'>Add</button>
+                            <button
+                            className='btn btn-primary'
+                            onClick={() => handleAddToCart(product, product.selectedSizeName ?? 0)}>Add</button>
                           </div>
                         </td>
                         <td className="align-middle">{formatNumber(product.price)}</td>

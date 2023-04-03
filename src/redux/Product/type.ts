@@ -5,7 +5,6 @@ export interface Product {
     price: number,
     image_url: string,
     sizes: Sizes[],
-    itemsInStock: number,
 }
 
 export interface Sizes {
@@ -16,5 +15,5 @@ export interface Sizes {
 
 export interface CartProduct extends Product {
     qty: number,
-    selectedSizeName?: number
+    selectedSizeName?: number | null;
 }
